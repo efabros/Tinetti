@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tinetti POMA - Full Assessment</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 960px; margin: auto; padding: 20px; }
+    h1, h2 { border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+    .item { margin-bottom: 20px; }
+    .description { font-size: 14px; margin: 5px 0; }
+    .score-input { width: 50px; font-size: 16px; }
+    .summary { font-weight: bold; font-size: 18px; margin-top: 30px; }
+  </style>
+  <script>
+    function calculateTotal() {
+      let total = 0;
+      document.querySelectorAll(".score-input").forEach(input => {
+        total += parseInt(input.value) || 0;
+      });
+      document.getElementById("totalScore").innerText = total;
+      let risk = "Low";
+      if (total < 19) risk = "High";
+      else if (total <= 24) risk = "Moderate";
+      document.getElementById("fallRisk").innerText = risk;
+    }
+  </script>
+</head>
+<body>
+  <h1>Tinetti Balance and Gait Evaluation (POMA)</h1>
+
+  <h2>Balance Subscale (0–16)</h2>
+
+  <div class="item"><strong>1. Sitting Balance</strong>
+    <div class="description">0 = Leans or slides; 1 = Steady, safe</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>2. Arises</strong>
+    <div class="description">0 = Unable without help; 1 = Uses arms; 2 = Without arms</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>3. Attempts to Arise</strong>
+    <div class="description">0 = Unable without help; 1 = More than one attempt; 2 = One attempt</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>4. Immediate Standing Balance</strong>
+    <div class="description">0 = Unsteady; 1 = Steady with support; 2 = Steady without support</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>5. Standing Balance</strong>
+    <div class="description">0 = Unsteady; 1 = Steady with support; 2 = Steady without support</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>6. Eyes Closed</strong>
+    <div class="description">0 = Unsteady; 1 = Steady</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>7. Nudge on Sternum</strong>
+    <div class="description">0 = Begins to fall; 1 = Steady with support; 2 = Steady without support</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>8. 360° Turn</strong>
+    <div class="description">0 = Unsteady/discontinuous steps; 1 = Continuous; 2 = Steady</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>9. Sitting Down</strong>
+    <div class="description">0 = Unsafe; 1 = Uses arms or not smooth; 2 = Safe and smooth</div>
+    <input type="number" min="0" max="2" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <h2>Gait Subscale (0–12)</h2>
+
+  <div class="item"><strong>10. Initiation of Gait</strong>
+    <div class="description">0 = Hesitant; 1 = No hesitation</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>11. Step Length & Height</strong>
+    <div class="description">0 = Uneven; 1 = Normal</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>12. Step Symmetry</strong>
+    <div class="description">0 = Asymmetrical; 1 = Symmetrical</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>13. Step Continuity</strong>
+    <div class="description">0 = Discontinuous; 1 = Continuous</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>14. Path</strong>
+    <div class="description">0 = Deviates; 1 = Straight</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>15. Trunk</strong>
+    <div class="description">0 = Sways or uses aid; 1 = No sway or device</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="item"><strong>16. Walking Stance</strong>
+    <div class="description">0 = Heels apart; 1 = Heels nearly touching</div>
+    <input type="number" min="0" max="1" class="score-input" onchange="calculateTotal()">
+  </div>
+
+  <div class="summary">
+    Total Score: <span id="totalScore">0</span> / 28<br>
+    Fall Risk: <span id="fallRisk">Low</span><br>
+    <span style="font-size: 14px;">(25–28 = Low, 19–24 = Moderate, <19 = High)</span>
+  </div>
+</body>
+</html>
